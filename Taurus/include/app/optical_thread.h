@@ -2,11 +2,11 @@
 
 #include <thread>
 
-#include "modules/tracking/tracking_utils.h"
-#include "modules/tracking/detector.h"
-#include "modules/cameras.h"
-#include "modules/config.h"
-#include "modules/psmove.h"
+#include "core/tracking/tracking_utils.h"
+#include "core/tracking/detector.h"
+#include "core/cameras.h"
+#include "core/config.h"
+#include "core/psmove.h"
 
 namespace taurus
 {

@@ -6,8 +6,8 @@ Subthread which manages the optical tracking system
 
 #include "app/optical_thread.h"
 
-#include "modules/utils.h"
-#include "modules/logging.h"
+#include "core/utils.h"
+#include "core/logging.h"
 
 taurus::OpticalThread* taurus::OpticalThread::instance = nullptr;
 

@@ -5,13 +5,13 @@
 #include <opencv2/opencv.hpp>
 #include <psmoveapi/psmove.h>
 
-#include "modules/communication.h"  // IMPORTANT: needs to be included first, not even sure where is winsock included after this
-#include "modules/tracking/detector.h"
-#include "modules/logging.h"
-#include "modules/utils.h"
-#include "modules/cameras.h"
-#include "modules/psmove.h"
-#include "modules/config.h"
+#include "core/communication.h"  // IMPORTANT: needs to be included first, not even sure where is winsock included after this
+#include "core/tracking/detector.h"
+#include "core/logging.h"
+#include "core/utils.h"
+#include "core/cameras.h"
+#include "core/psmove.h"
+#include "core/config.h"
 
 #include "app/communication_thread.h"
 #include "app/filter_thread.h"

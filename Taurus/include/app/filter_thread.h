@@ -2,9 +2,9 @@
 
 #include <thread>
 
-#include "modules/tracking/tracking_utils.h"
-#include "modules/config.h"
-#include "modules/psmove.h"
+#include "core/tracking/tracking_utils.h"
+#include "core/config.h"
+#include "core/psmove.h"
 
 namespace taurus
 {

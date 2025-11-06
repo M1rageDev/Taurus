@@ -6,8 +6,8 @@ Subthread which manages the filtering of the tracking data, as well as post proc
 
 #include "app/filter_thread.h"
 
-#include "modules/lowpass.h"
-#include "modules/logging.h"
+#include "core/lowpass.h"
+#include "core/logging.h"
 
 #include "app/optical_thread.h"
 

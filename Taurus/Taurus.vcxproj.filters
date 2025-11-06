@@ -24,46 +24,46 @@
     <ClCompile Include="thirdparty\include\ps3eye_capi.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modules\logging.cpp">
+    <ClCompile Include="src\core\logging.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modules\cameras.cpp">
+    <ClCompile Include="src\core\cameras.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modules\psmove.cpp">
+    <ClCompile Include="src\core\psmove.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modules\utils.cpp">
+    <ClCompile Include="src\core\utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modules\madgwick.cpp">
+    <ClCompile Include="src\core\madgwick.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modules\json_handler.cpp">
+    <ClCompile Include="src\core\json_handler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modules\imu_calibration.cpp">
+    <ClCompile Include="src\core\imu_calibration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\TaurusCalibrator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modules\tracking\tracking_utils.cpp">
+    <ClCompile Include="src\core\tracking\tracking_utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modules\tracking\detector.cpp">
+    <ClCompile Include="src\core\tracking\detector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modules\camera_calibration.cpp">
+    <ClCompile Include="src\core\camera_calibration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modules\lowpass.cpp">
+    <ClCompile Include="src\core\lowpass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modules\config.cpp">
+    <ClCompile Include="src\core\config.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\modules\communication.cpp">
+    <ClCompile Include="src\core\communication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="include\protocol\TaurusMessages.pb.cc">
@@ -89,10 +89,10 @@
     <ClInclude Include="thirdparty\include\ps3eye_capi.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\modules\logging.h">
+    <ClInclude Include="include\core\logging.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\modules\cameras.h">
+    <ClInclude Include="include\core\cameras.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="thirdparty\include\psmoveapi\psmove.h">
@@ -110,40 +110,40 @@
     <ClInclude Include="thirdparty\include\psmoveapi\psmoveapi.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\modules\psmove.h">
+    <ClInclude Include="include\core\psmove.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\modules\utils.h">
+    <ClInclude Include="include\core\utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\modules\madgwick.h">
+    <ClInclude Include="include\core\madgwick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\modules\imuCalibration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\modules\json_handler.h">
+    <ClInclude Include="include\core\json_handler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\modules\imu_calibration.h">
+    <ClInclude Include="include\core\imu_calibration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\modules\tracking\detector.h">
+    <ClInclude Include="include\core\tracking\detector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\modules\tracking\tracking_utils.h">
+    <ClInclude Include="include\core\tracking\tracking_utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\modules\camera_calibration.h">
+    <ClInclude Include="include\core\camera_calibration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\modules\lowpass.h">
+    <ClInclude Include="include\core\lowpass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\modules\config.h">
+    <ClInclude Include="include\core\config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\modules\communication.h">
+    <ClInclude Include="include\core\communication.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\protocol\TaurusMessages.pb.h">

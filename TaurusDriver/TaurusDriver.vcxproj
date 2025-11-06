@@ -20,24 +20,25 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\communication.cpp" />
-    <ClCompile Include="src\controller.cpp" />
-    <ClCompile Include="src\deviceDriver.cpp" />
-    <ClCompile Include="src\driverFactory.cpp" />
+    <ClCompile Include="src\controller_device.cpp" />
+    <ClCompile Include="src\driver_main.cpp" />
+    <ClCompile Include="src\entry_point.cpp" />
     <ClCompile Include="src\logging.cpp" />
     <ClCompile Include="src\settings.cpp" />
     <ClCompile Include="include\protocol\TaurusMessages.pb.cc" />
-    <ClCompile Include="src\tracker.cpp" />
+    <ClCompile Include="src\tracker_device.cpp" />
     <ClCompile Include="src\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\communication.h" />
-    <ClInclude Include="include\controller.h" />
-    <ClInclude Include="include\deviceDriver.h" />
+    <ClInclude Include="include\controller_device.h" />
+    <ClInclude Include="include\driver_main.h" />
     <ClInclude Include="include\logging.h" />
     <ClInclude Include="include\settings.h" />
-    <ClInclude Include="include\tracker.h" />
+    <ClInclude Include="include\tracker_device.h" />
     <ClInclude Include="include\utils.h" />
     <ClInclude Include="include\protocol\TaurusMessages.pb.h" />
+    <ClInclude Include="include\vrmath.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TaurusProtocol\compileProtoCpp.bat" />

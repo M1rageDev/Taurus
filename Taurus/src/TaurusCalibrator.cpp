@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
 
-#include "modules/camera_calibration.h"
-#include "modules/imu_calibration.h"
-#include "modules/logging.h"
-#include "modules/cameras.h"
-#include "modules/psmove.h"
+#include "core/camera_calibration.h"
+#include "core/imu_calibration.h"
+#include "core/logging.h"
+#include "core/cameras.h"
+#include "core/psmove.h"
 
 namespace logging = taurus::logging;
 

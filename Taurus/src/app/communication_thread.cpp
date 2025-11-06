@@ -9,8 +9,8 @@ Subthread which manages the communication (sending tracking/status data, receivi
 #include <google/protobuf/util/json_util.h>
 #include <psmoveapi/psmove.h>
 
-#include "modules/logging.h"
-#include "modules/utils.h"
+#include "core/logging.h"
+#include "core/utils.h"
 
 #include "app/optical_thread.h"
 
