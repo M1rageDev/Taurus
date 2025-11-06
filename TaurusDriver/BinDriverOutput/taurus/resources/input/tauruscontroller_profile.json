@@ -1,0 +1,86 @@
+{
+	"jsonid": "input_profile",
+	"controller_type": "tauruscontroller",
+	"should_show_binding_errors": true,
+	"remapping" : "{taurus}/input/tauruscontroller_remapping.json",
+	"input_bindingui_mode": "controller_handed",
+	"input_bindingui_left": {
+		"image": "{taurus}/icons/sample_controller.svg"
+	},
+	"input_bindingui_right": {
+		"image": "{taurus}/icons/sample_controller.svg"
+	},
+	"input_source": {
+		"/input/system": {
+			"binding_image_point": [ 80, 60 ],
+			"type": "button",
+			"click": true,
+			"order": 1
+		},
+		"/input/move": {
+			"binding_image_point": [ 80, 60 ],
+			"type": "button",
+			"click": true,
+			"order": 2
+		},
+		"/input/square": {
+			"binding_image_point": [ 80, 60 ],
+			"type": "button",
+			"click": true,
+			"order": 3
+		},
+		"/input/cross": {
+			"binding_image_point": [ 80, 60 ],
+			"type": "button",
+			"click": true,
+			"order": 4
+		},
+		"/input/triangle": {
+			"binding_image_point": [ 80, 60 ],
+			"type": "button",
+			"click": true,
+			"order": 5
+		},
+		"/input/circle": {
+			"binding_image_point": [ 80, 60 ],
+			"type": "button",
+			"click": true,
+			"order": 6
+		},
+		"/input/start": {
+			"binding_image_point": [ 80, 60 ],
+			"type": "button",
+			"click": true,
+			"order": 7
+		},
+		"/input/select": {
+			"binding_image_point": [ 80, 60 ],
+			"type": "button",
+			"click": true,
+			"order": 8
+		},
+		"/input/virtual_joystick" : {
+			"type" : "joystick",
+			"binding_image_point" : [ 54, 31 ],
+			"click" : true,
+			"order" : 9
+		},
+		"/input/trigger": {
+			"binding_image_point": [ 250, 60 ],
+			"type": "trigger",
+			"value": true,
+			"order": 10
+		},
+		"/output/haptic": {
+			"binding_image_point": [ 300, 150 ],
+			"type": "vibration",
+			"order": 11
+		},
+		
+		"/pose/raw": {
+			"type": "pose",
+			"binding_image_point": [ 5, 35 ]
+		}
+	},
+	"default_bindings": []
+}

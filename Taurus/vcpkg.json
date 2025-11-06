@@ -1,0 +1,17 @@
+{
+  "name": "taurus",
+  "version": "0.1",
+  "dependencies": [
+    "glm",
+    "hidapi",
+    "libusb",
+    {
+      "name": "opencv",
+      "features": [
+        "contrib"
+      ]
+    },
+    "protobuf",
+    "nlohmann-json"
+  ]
+}

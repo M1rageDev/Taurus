@@ -1,0 +1,14 @@
+{
+   "driver_taurus": {
+      "enable": true,
+      "model_number": "Taurus One",
+	  "udp_port": 49152,
+	  "udp_send_port": 49000
+   },
+   "driver_taurus_left_controller": {
+      "serial": "00:13:8a:9c:31:42"
+   },
+   "driver_taurus_right_controller": {
+      "serial": "00:06:f7:c9:a1:fb"
+   }
+}

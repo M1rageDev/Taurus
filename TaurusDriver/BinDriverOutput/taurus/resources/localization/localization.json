@@ -1,0 +1,9 @@
+[
+  {
+    "language_tag": "en_US",
+    "tauruscontroller" : "Taurus Controller",
+
+    "/input/a" : "A button",
+    "/input/trigger": "Trigger"
+  }
+]

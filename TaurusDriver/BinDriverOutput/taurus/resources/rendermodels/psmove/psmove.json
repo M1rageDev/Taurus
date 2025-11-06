@@ -1,0 +1,159 @@
+{
+    "thumbnail": "psmove_thumbnail.png",
+    "components": {
+        "body": {
+            "filename": "body.obj",
+
+            "component_local" : {
+                "origin": [0.0, 0.0, 0.0],
+                "rotate_xyz": [0.0,0.0,0.0]
+            }
+        },
+		"btn_system": {
+			"filename": "btn_system.obj",
+			
+			"motion":{
+                "type":"translate",
+                "pressed_path" : "/input/system/click",
+                "controller_button": 0,
+                "value_mapping": [0.0, 0.001223],
+                "axis": [0.0, -1.0, 0.0]
+            },
+			
+			"component_local": {
+                "origin": [0.0,0.0,0.0],
+                "rotate_xyz": [0.0,0.0,0.0]
+            }
+		},
+		"btn_move": {
+			"filename": "btn_move.obj",
+			
+			"motion":{
+                "type":"translate",
+                "pressed_path" : "/input/move/click",
+                "controller_button": 0,
+                "value_mapping": [0.0, 0.001645],
+                "axis": [0.0, -1.0, 0.0]
+            },
+			
+			"component_local": {
+                "origin": [0.0,0.0,0.0],
+                "rotate_xyz": [0.0,0.0,0.0]
+            }
+		},
+		"btn_square": {
+			"filename": "btn_square.obj",
+			
+			"motion":{
+                "type":"translate",
+                "pressed_path" : "/input/square/click",
+                "controller_button": 0,
+                "value_mapping": [0.0, 0.00065],
+                "axis": [0.0, -1.0, 0.0]
+            },
+			
+			"component_local": {
+                "origin": [0.0,0.0,0.0],
+                "rotate_xyz": [0.0,0.0,0.0]
+            }
+		},
+		"btn_cross": {
+			"filename": "btn_cross.obj",
+			
+			"motion":{
+                "type":"translate",
+                "pressed_path" : "/input/cross/click",
+                "controller_button": 0,
+                "value_mapping": [0.0, 0.00065],
+                "axis": [0.0, -1.0, 0.0]
+            },
+			
+			"component_local": {
+                "origin": [0.0,0.0,0.0],
+                "rotate_xyz": [0.0,0.0,0.0]
+            }
+		},
+		"btn_triangle": {
+			"filename": "btn_triangle.obj",
+			
+			"motion":{
+                "type":"translate",
+                "pressed_path" : "/input/triangle/click",
+                "controller_button": 0,
+                "value_mapping": [0.0, 0.00065],
+                "axis": [0.0, -1.0, 0.0]
+            },
+			
+			"component_local": {
+                "origin": [0.0,0.0,0.0],
+                "rotate_xyz": [0.0,0.0,0.0]
+            }
+		},
+		"btn_circle": {
+			"filename": "btn_circle.obj",
+			
+			"motion":{
+                "type":"translate",
+                "pressed_path" : "/input/circle/click",
+                "controller_button": 0,
+                "value_mapping": [0.0, 0.00065],
+                "axis": [0.0, -1.0, 0.0]
+            },
+			
+			"component_local": {
+                "origin": [0.0,0.0,0.0],
+                "rotate_xyz": [0.0,0.0,0.0]
+            }
+		},
+		"btn_start": {
+			"filename": "btn_start.obj",
+			
+			"motion":{
+                "type":"translate",
+                "pressed_path" : "/input/start/click",
+                "controller_button": 0,
+                "value_mapping": [0.0, 0.000551],
+                "axis": [-1.0, 0.0, 0.0]
+            },
+			
+			"component_local": {
+                "origin": [0.0,0.0,0.0],
+                "rotate_xyz": [0.0,0.0,0.0]
+            }
+		},
+		"btn_select": {
+			"filename": "btn_select.obj",
+			
+			"motion":{
+                "type":"translate",
+                "pressed_path" : "/input/select/click",
+                "controller_button": 0,
+                "value_mapping": [0.0, -0.000551],
+                "axis": [-1.0, 0.0, 0.0]
+            },
+			
+			"component_local": {
+                "origin": [0.0,0.0,0.0],
+                "rotate_xyz": [0.0,0.0,0.0]
+            }
+		},
+		"trigger": {
+            "filename": "trigger.obj",
+			
+            "motion":{
+                "type":"rotate",
+                "controller_axis":1,
+                "controller_axis_component":0,
+                "trigger_path" : "/input/trigger",
+                "value_mapping": [0.0,-26.0],
+                "pivot": [-0.000053, -0.013527, -0.041072],
+                "axis": [1.0, 0.0, 0.0]
+            },
+			
+            "component_local": {
+                "origin": [0.0,0.0,0.0],
+                "rotate_xyz": [0.0,0.0,0.0]
+            }
+        }
+    }
+}

@@ -1,0 +1,105 @@
+syntax = "proto3";
+
+package messages;
+
+// tracking stuff
+message Position {
+	float x = 1;
+	float y = 2;
+	float z = 3;
+}
+
+message Orientation {
+	float x = 1;
+	float y = 2;
+	float z = 3;
+	float w = 4;
+}
+
+message Pose {
+	Position position = 1;
+	Orientation orientation = 2;
+}
+
+// other stuff
+enum InputComponent {
+	SYSTEM = 0;
+	MOVE = 1;
+
+	SQUARE = 2;
+	CROSS = 3;
+	TRIANGLE = 4;
+	CIRCLE = 5;
+
+	START = 6;
+	SELECT = 7;
+
+	TRIGGER = 8;
+}
+
+message InputEvent {
+	InputComponent component = 1;
+	float value = 2;
+}
+
+message ControllerStatus {
+	bool is_connected = 1;
+	bool is_tracking = 2;
+	bool is_charging = 3;
+	int32 battery_percent = 4;
+}
+
+message HapticEvent {
+	float duration = 1;
+	float frequency = 2;
+	float amplitude = 3;
+}
+
+message TrackerInfo {
+	int32 id = 1;
+	Pose pose = 2;
+}
+
+// consolidated Taurus messages
+message PoseMessage {
+	Pose pose = 1;
+}
+
+message InputMessage {
+	repeated InputEvent events = 1;
+}
+
+message StatusMessage {
+	ControllerStatus status = 1;
+}
+
+message TrackersRequestAnswerMessage {
+	repeated TrackerInfo trackers = 1;
+}
+
+message TaurusMessage {
+	string serial = 1;
+	oneof message {
+		PoseMessage pose_message = 2;
+		InputMessage input_message = 3;
+		StatusMessage status_message = 4;
+		TrackersRequestAnswerMessage trackers_request_answer_message = 5;
+	}
+}
+
+// consolidated driver messages
+message HapticMessage {
+	HapticEvent event = 1;
+}
+
+message TrackersRequestMessage {
+	bool placeholder = 1;  // to not have empty message
+}
+
+message DriverMessage {
+	string serial = 1;
+	oneof message {
+		HapticMessage haptic_message = 2;
+		TrackersRequestMessage trackers_request_message = 3;
+	}
+}

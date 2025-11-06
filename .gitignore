@@ -39,3 +39,12 @@
 
 # debug information files
 *.dwo
+
+# -- Added by MD
+*.user
+*.exp
+BinIntermediate/
+thirdparty/
+vcpkg_installed/
+x64/
+.vs/

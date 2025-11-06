@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Taurus", "Taurus\Taurus.vcxproj", "{6FE50759-1F52-4576-9EB9-8C38E64864A2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TaurusDriver", "TaurusDriver\TaurusDriver.vcxproj", "{13391803-5E60-4BED-9B54-F9004412E16C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		TaurusProtocol\compileProtoCpp.bat = TaurusProtocol\compileProtoCpp.bat
+		TaurusProtocol\compileProtoPy.bat = TaurusProtocol\compileProtoPy.bat
+		TaurusProtocol\TaurusMessages.proto = TaurusProtocol\TaurusMessages.proto
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		DebugCalibrator|x64 = DebugCalibrator|x64
+		DebugCalibrator|x86 = DebugCalibrator|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+		ReleaseCalibrator|x64 = ReleaseCalibrator|x64
+		ReleaseCalibrator|x86 = ReleaseCalibrator|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FE50759-1F52-4576-9EB9-8C38E64864A2}.Debug|x64.ActiveCfg = Debug|x64
+		{6FE50759-1F52-4576-9EB9-8C38E64864A2}.Debug|x64.Build.0 = Debug|x64
+		{6FE50759-1F52-4576-9EB9-8C38E64864A2}.Debug|x86.ActiveCfg = Debug|Win32
+		{6FE50759-1F52-4576-9EB9-8C38E64864A2}.Debug|x86.Build.0 = Debug|Win32
+		{6FE50759-1F52-4576-9EB9-8C38E64864A2}.DebugCalibrator|x64.ActiveCfg = DebugConfigurator|x64
+		{6FE50759-1F52-4576-9EB9-8C38E64864A2}.DebugCalibrator|x64.Build.0 = DebugConfigurator|x64
+		{6FE50759-1F52-4576-9EB9-8C38E64864A2}.DebugCalibrator|x86.ActiveCfg = DebugConfigurator|Win32
+		{6FE50759-1F52-4576-9EB9-8C38E64864A2}.DebugCalibrator|x86.Build.0 = DebugConfigurator|Win32
+		{6FE50759-1F52-4576-9EB9-8C38E64864A2}.Release|x64.ActiveCfg = Release|x64
+		{6FE50759-1F52-4576-9EB9-8C38E64864A2}.Release|x64.Build.0 = Release|x64
+		{6FE50759-1F52-4576-9EB9-8C38E64864A2}.Release|x86.ActiveCfg = Release|Win32
+		{6FE50759-1F52-4576-9EB9-8C38E64864A2}.Release|x86.Build.0 = Release|Win32
+		{6FE50759-1F52-4576-9EB9-8C38E64864A2}.ReleaseCalibrator|x64.ActiveCfg = Debug|x64
+		{6FE50759-1F52-4576-9EB9-8C38E64864A2}.ReleaseCalibrator|x64.Build.0 = Debug|x64
+		{6FE50759-1F52-4576-9EB9-8C38E64864A2}.ReleaseCalibrator|x86.ActiveCfg = ReleaseConfigurator|Win32
+		{6FE50759-1F52-4576-9EB9-8C38E64864A2}.ReleaseCalibrator|x86.Build.0 = ReleaseConfigurator|Win32
+		{13391803-5E60-4BED-9B54-F9004412E16C}.Debug|x64.ActiveCfg = Debug|x64
+		{13391803-5E60-4BED-9B54-F9004412E16C}.Debug|x64.Build.0 = Debug|x64
+		{13391803-5E60-4BED-9B54-F9004412E16C}.Debug|x86.ActiveCfg = Debug|Win32
+		{13391803-5E60-4BED-9B54-F9004412E16C}.Debug|x86.Build.0 = Debug|Win32
+		{13391803-5E60-4BED-9B54-F9004412E16C}.DebugCalibrator|x64.ActiveCfg = Debug|x64
+		{13391803-5E60-4BED-9B54-F9004412E16C}.DebugCalibrator|x64.Build.0 = Debug|x64
+		{13391803-5E60-4BED-9B54-F9004412E16C}.DebugCalibrator|x86.ActiveCfg = Debug|Win32
+		{13391803-5E60-4BED-9B54-F9004412E16C}.DebugCalibrator|x86.Build.0 = Debug|Win32
+		{13391803-5E60-4BED-9B54-F9004412E16C}.Release|x64.ActiveCfg = Release|x64
+		{13391803-5E60-4BED-9B54-F9004412E16C}.Release|x64.Build.0 = Release|x64
+		{13391803-5E60-4BED-9B54-F9004412E16C}.Release|x86.ActiveCfg = Release|Win32
+		{13391803-5E60-4BED-9B54-F9004412E16C}.Release|x86.Build.0 = Release|Win32
+		{13391803-5E60-4BED-9B54-F9004412E16C}.ReleaseCalibrator|x64.ActiveCfg = Release|x64
+		{13391803-5E60-4BED-9B54-F9004412E16C}.ReleaseCalibrator|x64.Build.0 = Release|x64
+		{13391803-5E60-4BED-9B54-F9004412E16C}.ReleaseCalibrator|x86.ActiveCfg = Release|Win32
+		{13391803-5E60-4BED-9B54-F9004412E16C}.ReleaseCalibrator|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92575DA8-DC0E-4466-AC5F-D4CBCB6ADBB5}
+	EndGlobalSection
+EndGlobal
