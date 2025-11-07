@@ -61,13 +61,13 @@ void taurus::FilterThread::ThreadFunc() {
 				obj->kinematic.ResetState();
 				obj->kinematic.SetVelocity(obj->opticalVelocity);
 
+				// apply negative velocity as acceleration to give some decay
+				obj->kinematic.SetAcceleration(-obj->opticalVelocity * velocityDecay);
+
 				// we've handled the new data
 				obj->newOpticalDataReady = false;
 			}
 			else {
-				// apply negative velocity as acceleration to give some decay
-				obj->kinematic.SetAcceleration(-obj->opticalVelocity * velocityDecay);
-
 				// get data from dead reckoning, if no data available yet
 				obj->kinematic.Integrate(secPassed);
 				obj->preFilteredPosition = obj->worldPosition + obj->kinematic.GetPosition();
