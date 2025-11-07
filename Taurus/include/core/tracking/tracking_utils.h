@@ -3,6 +3,8 @@
 #include <opencv2/opencv.hpp>
 #include <glm/glm.hpp>
 
+#include "core/filter/filter_utils.h"
+
 namespace taurus::tracking
 {
 	struct HsvColorRange {
@@ -27,16 +29,25 @@ namespace taurus::tracking
 
 		std::vector<PerCameraData> perCameraData;
 
+		// 3d tracking
 		cv::Point3f triangulatedPosition = {};
 		bool acquired3DPosition = false;
+		bool newOpticalDataReady = false;
 
-		cv::Point3f worldPosition = {};
-		cv::Point3f previousWorldPosition = {};
+		// after world transform
+		glm::vec3 worldPosition = {};
+		glm::vec3 previousWorldPosition = {};
 
+		// optical prediction
+		glm::vec3 opticalVelocity = {};
+
+		// filtering
 		glm::vec3 preFilteredPosition = {};
 		glm::vec3 filteredPosition = {};
 		glm::vec3 previousFilteredPosition = {};
 		glm::vec3 filteredPositionM = {};
+
+		filter::KinematicObject kinematic = {};
 	};
 
 	cv::Point2f rectCenter(cv::Rect& rect);

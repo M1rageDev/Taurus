@@ -42,9 +42,6 @@
     <ClCompile Include="src\core\json_handler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\imu_calibration.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\TaurusCalibrator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -54,10 +51,7 @@
     <ClCompile Include="src\core\tracking\detector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\camera_calibration.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\lowpass.cpp">
+    <ClCompile Include="src\core\filter\lowpass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\core\config.cpp">
@@ -79,6 +73,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\app\optical_thread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\filter\filter_utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\calibration\camera_calibration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\calibration\imu_calibration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -125,19 +128,13 @@
     <ClInclude Include="include\core\json_handler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\core\imu_calibration.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\core\tracking\detector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\core\tracking\tracking_utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\core\camera_calibration.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\lowpass.h">
+    <ClInclude Include="include\core\filter\lowpass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\core\config.h">
@@ -159,6 +156,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\app\optical_thread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\filter\filter_utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\calibration\camera_calibration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\calibration\imu_calibration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

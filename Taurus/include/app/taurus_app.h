@@ -41,8 +41,6 @@ namespace taurus
 			CameraManager* cameraManager;
 			size_t cameraCount;
 			cv::Mat frame;
-
-			std::vector<tracking::TrackedObject>* trackedControllers;
 			
 			CommunicationThread* commsThread;
 			FilterThread* filterThread;

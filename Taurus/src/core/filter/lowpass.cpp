@@ -1,12 +1,12 @@
-#include "core/lowpass.h"
+#include "core/filter/lowpass.h"
 
 #include <algorithm>
 
-glm::vec3 taurus::lowpassFilter(const glm::vec3& last, const glm::vec3& current, const glm::vec3& alpha) {
+glm::vec3 taurus::filter::lowpassFilter(const glm::vec3& last, const glm::vec3& current, const glm::vec3& alpha) {
 	return glm::mix(last, current, alpha);
 }
 
-glm::vec3 taurus::improvedLowpassFilter(const glm::vec3& last, const glm::vec3& current, const glm::vec3& alpha) {
+glm::vec3 taurus::filter::improvedLowpassFilter(const glm::vec3& last, const glm::vec3& current, const glm::vec3& alpha) {
 	float invDelta = 1.f / glm::length(last - current);
 
 	glm::vec3 weight = glm::vec3();

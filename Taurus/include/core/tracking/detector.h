@@ -16,4 +16,5 @@ namespace taurus::tracking
 	cv::Rect findLargestBlob(const cv::Mat& mask, cv::Point2f& circleCenter, float& circleRadius);
 	bool findSingleBall(const cv::Mat& frame, TrackedObject& obj, int cameraIndex);
 	void findMultiBalls(const cv::Mat& frame, std::vector<TrackedObject>& objects, int cameraIndex);
+	void findMultiBalls(const cv::Mat& frame, std::vector<TrackedObject*>& objects, int cameraIndex);
 }

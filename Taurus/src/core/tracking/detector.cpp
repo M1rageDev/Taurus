@@ -126,3 +126,13 @@ void taurus::tracking::findMultiBalls(const cv::Mat& frame, std::vector<TrackedO
 		bool found = findSingleBallHsvMasked(hsvMaskedFrame, mask, obj.perCameraData[cameraIndex]);
 	}
 }
+
+void taurus::tracking::findMultiBalls(const cv::Mat& frame, std::vector<TrackedObject*>& objects, int cameraIndex) {
+	cv::Mat hsvMaskedFrame, maskedFrame, mask;
+	maskBrightBlobs(frame, maskedFrame, mask);
+	cv::cvtColor(maskedFrame, hsvMaskedFrame, cv::COLOR_BGR2HSV);
+
+	for (TrackedObject* obj : objects) {
+		bool found = findSingleBallHsvMasked(hsvMaskedFrame, mask, obj->perCameraData[cameraIndex]);
+	}
+}

@@ -59,8 +59,6 @@ void taurus::TaurusApp::Init() {
 	filterThread = new FilterThread();
 	commsThread = new CommunicationThread();
 
-	trackedControllers = opticalThread->GetTrackedObjects();
-
 	logging::info("TaurusApp init finished");
 }
 
@@ -91,11 +89,12 @@ void taurus::TaurusApp::MainLoop() {
 				if (configStorage->annotatePreview.value_or(true)) {
 					cv::putText(frame, std::format("Optical Hz: {}", opticalThread->GetFps()), {0, 20}, cv::FONT_HERSHEY_PLAIN, 1.2, {255, 255, 255});
 
-					for (int controllerI = 0; controllerI < trackedControllers->size(); controllerI++) {
-						tracking::TrackedObject& obj = (*trackedControllers)[controllerI];
+					for (int controllerI = 0; controllerI < connectedControllers.size(); controllerI++) {
+						Controller* controller = controllers->GetController(connectedControllers[controllerI]);
+						tracking::TrackedObject* obj = controller->GetTrackedObject();;
 
 						// if we have tracking data for this camera, show it
-						tracking::TrackedObject::PerCameraData& thisCameraData = obj.perCameraData[i];
+						tracking::TrackedObject::PerCameraData& thisCameraData = obj->perCameraData[i];
 						if (thisCameraData.acquiredTracking) {
 							if (configStorage->annotatePreview.value_or(true)) {
 								cv::rectangle(frame, thisCameraData.roi, { 255, 255, 255 }, 1);
@@ -105,13 +104,13 @@ void taurus::TaurusApp::MainLoop() {
 						}
 
 						// if we have 3D position, show it
-						if (obj.acquired3DPosition) {
+						if (obj->acquired3DPosition) {
 							std::string posText = std::format(
 								"Controller {} Pos - X:{:.2f} Y:{:.2f} Z:{:.2f}",
 								controllerI,
-								obj.filteredPosition.x,
-								obj.filteredPosition.y,
-								obj.filteredPosition.z
+								obj->filteredPosition.x,
+								obj->filteredPosition.y,
+								obj->filteredPosition.z
 							);
 							cv::putText(frame, posText, { 0, 40 + controllerI * 20 }, cv::FONT_HERSHEY_PLAIN, 1.2, { 255, 255, 255 });
 						}
@@ -134,7 +133,7 @@ void taurus::TaurusApp::MainLoop() {
 				controller->ResetAhrs();
 
 				if (controller->IsButtonPressed(Btn_START)) {
-					filterThread->SetPositionPostOffset(glm::vec3((*trackedControllers)[i].preFilteredPosition));  // pre-filtered position
+					filterThread->SetPositionPostOffset(glm::vec3(controller->GetTrackedObject()->preFilteredPosition));  // pre-filtered position
 				}
 			}
 

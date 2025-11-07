@@ -35,13 +35,13 @@ taurus::OpticalThread::OpticalThread() {
 	frame = camera0.InitFrameMat();
 
 	// init the tracked object list
-	trackedObjects = std::vector<tracking::TrackedObject>();
+	trackedObjects = std::vector<tracking::TrackedObject*>();
 	for (std::string serial : connectedControllers) {
 		// run for every connected controller
 		Controller* controller = controllers->GetController(serial);
 
 		// add initial per-camera data to the controller
-		tracking::TrackedObject obj = tracking::TrackedObject();
+		tracking::TrackedObject* obj = controller->GetTrackedObject();
 		for (int i = 0; i < cameraCount; i++) {
 			Camera& cam = cameraManager->GetCamera(i);
 
@@ -50,7 +50,7 @@ taurus::OpticalThread::OpticalThread() {
 			data.color = cam.GetHsvColorRange(controller->GetColorName());
 			data.roi = tracking::createFrameRoi(frame);
 
-			obj.perCameraData.push_back(data);
+			obj->perCameraData.push_back(data);
 		}
 
 		trackedObjects.push_back(obj);
@@ -73,7 +73,7 @@ int taurus::OpticalThread::GetFps() const {
 	return fps;
 }
 
-std::vector<taurus::tracking::TrackedObject>* taurus::OpticalThread::GetTrackedObjects() {
+std::vector<taurus::tracking::TrackedObject*>* taurus::OpticalThread::GetTrackedObjects() {
 	return &trackedObjects;
 }
 
@@ -81,46 +81,55 @@ void taurus::OpticalThread::ThreadFunc() {
 	TaurusConfigStorage* configStorage = config->GetStorage();
 
 	long lastTick = psmove_util_get_ticks();
+	long now;
+	float msPassed, secPassed;
 	while (threadActive.load()) {
-		long now = psmove_util_get_ticks();
-		long msPassed = now - lastTick;
+		now = psmove_util_get_ticks();
+		msPassed = static_cast<float>(now - lastTick);
 		lastTick = now;
-		fps = roundToInt(1000.f / static_cast<float>(msPassed));
+
+		fps = roundToInt(1000.f / msPassed);
+		secPassed = msPassed / 1000.f;
 
 		// do for each cam
 		for (int i = 0; i < cameraCount; i++) {
-			taurus::Camera& cam = cameraManager->GetCamera(i);
+			Camera& cam = cameraManager->GetCamera(i);
 			cam.GetFrame(frame);
 
 			// track the controllers
-			taurus::tracking::findMultiBalls(frame, trackedObjects, i);
-			for (taurus::tracking::TrackedObject& obj : trackedObjects) {
-				auto& thisCameraData = obj.perCameraData[i];
+			tracking::findMultiBalls(frame, trackedObjects, i);
+			for (tracking::TrackedObject* obj : trackedObjects) {
+				auto& thisCameraData = obj->perCameraData[i];
 
 				if (!thisCameraData.acquiredTracking) {
 					// lost tracking
 					// increase ROI size to try and find the controller
-					taurus::tracking::increaseRoiSize(thisCameraData.roi, 100);
-					taurus::tracking::clampRoi(frame, thisCameraData.roi);
+					tracking::increaseRoiSize(thisCameraData.roi, 100);
+					tracking::clampRoi(frame, thisCameraData.roi);
 				}
 			}
 		}
 
 		// track every controller in 3D
-		for (taurus::tracking::TrackedObject& obj : trackedObjects) {
+		for (tracking::TrackedObject* obj : trackedObjects) {
 			// if we have tracking data from both cameras, triangulate
-			obj.acquired3DPosition = obj.perCameraData[0].acquiredTracking && obj.perCameraData[1].acquiredTracking;
-			if (obj.acquired3DPosition) {
+			obj->acquired3DPosition = obj->perCameraData[0].acquiredTracking && obj->perCameraData[1].acquiredTracking;
+			if (obj->acquired3DPosition) {
 				// undistort
-				cv::Point2f undistorted0 = taurus::tracking::undistort(obj.perCameraData[0].globalCircleCenter, calib0.K, calib0.distort);
-				cv::Point2f undistorted1 = taurus::tracking::undistort(obj.perCameraData[1].globalCircleCenter, calib1.K, calib1.distort);
+				cv::Point2f undistorted0 = tracking::undistort(obj->perCameraData[0].globalCircleCenter, calib0.K, calib0.distort);
+				cv::Point2f undistorted1 = tracking::undistort(obj->perCameraData[1].globalCircleCenter, calib1.K, calib1.distort);
 
 				// triangulate
-				obj.triangulatedPosition = taurus::tracking::triangulate(calib0.P, calib1.P, obj.perCameraData[0], obj.perCameraData[1]);
-				obj.worldPosition = taurus::tracking::transform(calib0.world, obj.triangulatedPosition);
+				obj->triangulatedPosition = tracking::triangulate(calib0.P, calib1.P, obj->perCameraData[0], obj->perCameraData[1]);
+				obj->worldPosition = tracking::cvPoint3fToGlmVec3(tracking::transform(calib0.world, obj->triangulatedPosition));
+
+				// predict
+				obj->opticalVelocity = (obj->worldPosition - obj->previousWorldPosition) / secPassed;
 
 				// store last frame pos, for future filtering
-				obj.previousWorldPosition = obj.worldPosition;
+				obj->previousWorldPosition = obj->worldPosition;
+
+				obj->newOpticalDataReady = true;
 			}
 		}
 	}

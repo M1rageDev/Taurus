@@ -22,10 +22,10 @@ namespace taurus
 
 			TaurusConfig* config;
 			ControllerManager* controllers;
-			std::vector<tracking::TrackedObject>* trackedObjects;
 
 			glm::vec3 positionPostOffset = {};
-			glm::vec3 lowpassAlpha;
+			glm::vec3 lowpassAlpha = {};
+			float velocityDecay = 1.f;
 
 			std::thread thread;
 			std::atomic<bool> threadActive = false;

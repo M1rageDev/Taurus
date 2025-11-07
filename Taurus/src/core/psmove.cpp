@@ -44,8 +44,9 @@ taurus::Controller::Controller(std::string serial) {
 	this->colorName = "off";
 	this->color = RGB_OFF;
 
-	this->imuCalibration = ImuCalibration();
+	this->trackedObject = tracking::TrackedObject();
 
+	this->imuCalibration = ImuCalibration();
 	this->initialQuat = glm::angleAxis(glm::radians(90.f), glm::vec3(1.f, 0.f, 0.f));
 	this->ahrsState = MadgwickState();
 	this->ahrsState.state = glm::quat(initialQuat);
@@ -62,19 +63,30 @@ void taurus::Controller::LoadData() {
 
 	// load gyro
 	bool success = readJson(createGyroPath(serial), &data);
-	if (success) {
+	imuCalibration.hasGyro = data.contains("offsets");
+	if (success && imuCalibration.hasGyro) {
 		imuCalibration.gyroOffsets = glm::vec3();
-		imuCalibration.hasGyro = jsonReadVec3(data, "offsets", &imuCalibration.gyroOffsets);
+		jsonReadVec3(data, "offsets", &imuCalibration.gyroOffsets);
 
-		if (imuCalibration.hasGyro) {
-			logging::info("Successfully loaded gyro calibration");
-		}
-		else {
-			logging::warning("Couldn't load gyro calibration from json!");
-		}
+		logging::info("Successfully loaded gyro calibration");
 	}
 	else {
 		logging::warning("Gyro calibration could not be loaded, this may cause issues!");
+	}
+
+	// load accel
+	data.clear();
+	success = readJson(createAccelPath(serial), &data);
+	imuCalibration.hasAccel = data.contains("bias") && data.contains("scale");
+	if (success && imuCalibration.hasAccel) {
+		imuCalibration.accelScale = glm::vec3();
+		jsonReadVec3(data, "bias", &imuCalibration.accelBias);
+		jsonReadVec3(data, "scale", &imuCalibration.accelScale);
+
+		logging::info("Successfully loaded accel calibration");
+	}
+	else {
+		logging::warning("Accel calibration could not be loaded, this may cause issues!");
 	}
 }
 
@@ -194,6 +206,10 @@ glm::vec3 taurus::Controller::GetAccel() const {
 	return aVec;
 }
 
+taurus::tracking::TrackedObject* taurus::Controller::GetTrackedObject() {
+	return &trackedObject;
+}
+
 taurus::MadgwickState* taurus::Controller::GetAhrsState() {
 	return &ahrsState;
 }
@@ -295,6 +311,9 @@ void taurus::Controller::HandleAhrs(long now) {
 
 		// swizzle around the axes to get a quaternion in the vr space
 		vrSpaceQuat = glm::quat(ahrsState.state.w, ahrsState.state.x, ahrsState.state.z, -ahrsState.state.y);
+
+		// update kinematics
+		trackedObject.kinematic.IntegrateIMU(aVec - imuCalibration.accelBias, ahrsState, halfTimestepS);
 	}
 
 	ahrsState.lastSample = now;

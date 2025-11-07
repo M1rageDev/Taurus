@@ -36,6 +36,10 @@ namespace taurus
 	struct ImuCalibration {
 		bool hasGyro;
 		glm::vec3 gyroOffsets;
+
+		bool hasAccel;
+		glm::vec3 accelBias;
+		glm::vec3 accelScale;
 	};
 
 	class Controller {
@@ -69,6 +73,8 @@ namespace taurus
 
 			glm::vec3 GetGyro() const;
 			glm::vec3 GetAccel() const;
+
+			tracking::TrackedObject* GetTrackedObject();
 
 			MadgwickState* GetAhrsState();
 			glm::quat GetVrQuat() const;
@@ -116,6 +122,9 @@ namespace taurus
 			float trigger01;
 
 			unsigned int buttonBitfield;
+
+			// Tracking
+			tracking::TrackedObject trackedObject;
 
 			// IMU and AHRS
 			ImuCalibration imuCalibration;

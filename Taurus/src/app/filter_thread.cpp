@@ -6,7 +6,7 @@ Subthread which manages the filtering of the tracking data, as well as post proc
 
 #include "app/filter_thread.h"
 
-#include "core/lowpass.h"
+#include "core/filter/lowpass.h"
 #include "core/logging.h"
 
 #include "app/optical_thread.h"
@@ -14,9 +14,9 @@ Subthread which manages the filtering of the tracking data, as well as post proc
 taurus::FilterThread::FilterThread() {
 	this->config = TaurusConfig::GetInstance();
 	this->controllers = ControllerManager::GetInstance();
-	this->trackedObjects = OpticalThread::GetInstance()->GetTrackedObjects();
 
 	this->lowpassAlpha = config->GetStorage()->lowpassAlpha.value_or(glm::vec3(0.4f, 0.4f, 0.3f));
+	this->velocityDecay = config->GetStorage()->velocityDecay.value_or(1.f);
 }
 
 void taurus::FilterThread::Start() {
@@ -36,27 +36,61 @@ void taurus::FilterThread::SetPositionPostOffset(glm::vec3 offset) {
 }
 
 void taurus::FilterThread::ThreadFunc() {
+	long lastTick = psmove_util_get_ticks();
+	long now;
+	float fps, msPassed, secPassed;
 	while (threadActive.load()) {
+		now = psmove_util_get_ticks();
+		msPassed = static_cast<float>(now - lastTick);
+		lastTick = now;
+
+		fps = 1000.f / msPassed;
+		secPassed = msPassed / 1000.f;
+
 		// for every connected controller
 		int i = 0;
 		for (auto& serial : controllers->GetConnectedSerials()) {
 			Controller* controller = controllers->GetController(serial);
-			std::vector<tracking::TrackedObject> objs = *trackedObjects;
-			tracking::TrackedObject& obj = (*trackedObjects)[i];
+			tracking::TrackedObject* obj = controller->GetTrackedObject();
 
-			if (obj.acquired3DPosition) {
-				// filter (lowpass)
-				obj.preFilteredPosition = taurus::tracking::cvPoint3fToGlmVec3(obj.worldPosition);
-				obj.filteredPosition = taurus::improvedLowpassFilter(
-					obj.previousFilteredPosition,
-					obj.preFilteredPosition,
-					lowpassAlpha
-				);
-				obj.previousFilteredPosition = obj.filteredPosition;
+			// handle new optical data
+			if (obj->newOpticalDataReady) {
+				obj->preFilteredPosition = obj->worldPosition;
 
-				obj.filteredPosition -= positionPostOffset;
-				obj.filteredPositionM = obj.filteredPosition * 0.01f;
+				// reset state and plug in the predicted optical velocity
+				obj->kinematic.ResetState();
+				obj->kinematic.SetVelocity(obj->opticalVelocity);
+
+				// we've handled the new data
+				obj->newOpticalDataReady = false;
 			}
+			else {
+				// apply negative velocity as acceleration to give some decay
+				obj->kinematic.SetAcceleration(-obj->opticalVelocity * velocityDecay);
+
+				// get data from dead reckoning, if no data available yet
+				obj->kinematic.Integrate(secPassed);
+				obj->preFilteredPosition = obj->worldPosition + obj->kinematic.GetPosition();
+			}
+
+			// filter
+			/*
+			obj->filteredPosition = filter::improvedLowpassFilter(
+				obj->previousFilteredPosition,
+				obj->preFilteredPosition,
+				lowpassAlpha
+			);
+			*/
+			obj->filteredPosition = filter::lowpassFilter(
+				obj->previousFilteredPosition,
+				obj->preFilteredPosition,
+				lowpassAlpha
+			);
+			obj->previousFilteredPosition = obj->filteredPosition;
+
+			// post processing
+			obj->filteredPosition -= positionPostOffset;
+			obj->filteredPositionM = obj->filteredPosition * 0.01f;
 			
 			i++;
 		}

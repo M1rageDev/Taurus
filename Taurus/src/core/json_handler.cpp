@@ -160,6 +160,10 @@ fs::path taurus::createGyroPath(std::string serial) {
 	return createPath(CONTROLLERS_SUBPATH / serialToFilename(serial), "gyro");
 }
 
+fs::path taurus::createAccelPath(std::string serial) {
+	return createPath(CONTROLLERS_SUBPATH / serialToFilename(serial), "accel");
+}
+
 fs::path taurus::createColorPath(uint8_t cameraId) {
 	return createPath(CAMERAS_SUBPATH / std::to_string(cameraId), "color");
 }
@@ -176,6 +180,14 @@ json taurus::createGyroData(glm::vec3 offsets) {
 	json data;
 	data["format"] = "gyro";
 	jsonWriteVec3("offsets", offsets, &data);
+	return data;
+}
+
+json taurus::createAccelData(glm::vec3 bias, glm::vec3 scale) {
+	json data;
+	data["format"] = "accel";
+	jsonWriteVec3("bias", bias, &data);
+	jsonWriteVec3("scale", scale, &data);
 	return data;
 }
 

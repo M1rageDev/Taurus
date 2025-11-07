@@ -18,7 +18,6 @@ taurus::CommunicationThread::CommunicationThread() {
 	this->config = TaurusConfig::GetInstance();
 	this->controllers = ControllerManager::GetInstance();
 	this->cameraManager = CameraManager::GetInstance();
-	this->trackedObjects = OpticalThread::GetInstance()->GetTrackedObjects();
 
 	TaurusConfigStorage* storage = config->GetStorage();
 	this->recvPort = storage->udpRecvPort.value();
@@ -146,7 +145,7 @@ void taurus::CommunicationThread::HandleHapticMessage(const messages::HapticMess
 
 	// clamp amplitude
 	if (amplitude < 0.35f) {
-		amplitude = 0.35;
+		amplitude = 0.35f;
 	}
 
 	// handle single pulse
@@ -199,12 +198,12 @@ void taurus::CommunicationThread::HandleTrackersRequest(const messages::Trackers
 
 void taurus::CommunicationThread::PreparePoseMessage(messages::TaurusMessage& msg, Controller* controller, std::string serial, int i) {
 	glm::quat vrQuat = controller->GetVrQuat();
-	tracking::TrackedObject& trackedObject = (*trackedObjects)[i];
+	tracking::TrackedObject* trackedObject = controller->GetTrackedObject();;
 	
 	// offset position by half the controller length in the forward direction, since position is measured at the ball
 	// TODO: put in config
 	static const float halfControllerLength = 0.08782f;
-	glm::vec3 offsetPos = tracking::offsetPosition(trackedObject.filteredPositionM, vrQuat, halfControllerLength);
+	glm::vec3 offsetPos = tracking::offsetPosition(trackedObject->filteredPositionM, vrQuat, halfControllerLength);
 
 	// fill in msg
 	messages::Pose pose;
@@ -277,7 +276,7 @@ void taurus::CommunicationThread::SendMsg(messages::TaurusMessage& msg) const {
 	// serialize msg and send
 	char buffer[1024];
 	sock::SerializeTaurusMsg(msg, buffer);
-	sock::SendData(sendSock, sendPort, buffer, msg.ByteSizeLong());
+	sock::SendData(sendSock, sendPort, buffer, static_cast<int>(msg.ByteSizeLong()));
 }
 
 void taurus::CommunicationThread::InterruptRecvSocket() const {

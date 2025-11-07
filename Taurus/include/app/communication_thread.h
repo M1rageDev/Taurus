@@ -35,7 +35,6 @@ namespace taurus
 			TaurusConfig* config;
 			ControllerManager* controllers;
 			CameraManager* cameraManager;
-			std::vector<tracking::TrackedObject>* trackedObjects;
 
 			std::thread recvThread;
 			std::thread sendThread;

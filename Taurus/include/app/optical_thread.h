@@ -21,7 +21,7 @@ namespace taurus
 			void Stop();
 
 			int GetFps() const;
-			std::vector<tracking::TrackedObject>* GetTrackedObjects();
+			std::vector<tracking::TrackedObject*>* GetTrackedObjects();
 		private:
 			static OpticalThread* instance;
 
@@ -31,7 +31,7 @@ namespace taurus
 			ControllerManager* controllers;
 			CameraManager* cameraManager;
 
-			std::vector<tracking::TrackedObject> trackedObjects;
+			std::vector<tracking::TrackedObject*> trackedObjects;
 			int fps = 0;
 
 			std::vector<std::string> connectedControllers;

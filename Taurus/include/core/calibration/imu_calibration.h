@@ -22,4 +22,19 @@ namespace taurus
 
 			glm::vec3 resultOffsets;
 	};
+
+	class AccelCalibrator {
+		public:
+			AccelCalibrator(std::string serial, int sampleCount = 5000);
+
+			void RunCalibration();
+		private:
+			Controller* controller;
+			std::string serial;
+
+			int minSamples;
+			std::vector<glm::vec3> samples;
+
+			glm::vec3 resultScale;
+	};
 }

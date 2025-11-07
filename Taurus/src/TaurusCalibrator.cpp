@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 
-#include "core/camera_calibration.h"
-#include "core/imu_calibration.h"
+#include "core/calibration/camera_calibration.h"
+#include "core/calibration/imu_calibration.h"
 #include "core/logging.h"
 #include "core/cameras.h"
 #include "core/psmove.h"
@@ -11,6 +11,11 @@ namespace logging = taurus::logging;
 
 static void gyroCalibration(std::string controllerSerial) {
 	taurus::GyroCalibrator calibrator = taurus::GyroCalibrator(controllerSerial);
+	calibrator.RunCalibration();
+}
+
+static void accelCalibration(std::string controllerSerial) {
+	taurus::AccelCalibrator calibrator = taurus::AccelCalibrator(controllerSerial);
 	calibrator.RunCalibration();
 }
 
@@ -31,7 +36,7 @@ static void extrinsicCalibration(std::string controllerSerial, int cameraId0, in
 
 int main() {
 	// Initialize controllers
-	taurus::ControllerManager controllers({});
+	taurus::ControllerManager controllers = taurus::ControllerManager();
 	controllers.ConnectControllers();
 	controllers.UpdateControllers();
 
@@ -51,6 +56,7 @@ int main() {
 	logging::info("Available modes:");
 	logging::info("[name - letter - args]");
 	logging::info("gyro -      g - cSerial");
+	logging::info("accel -     a - cSerial");
 	logging::info("color -     c - cSerial, camId");
 	logging::info("intrinsic - i - camId");
 	logging::info("extrinsic - e - cSerial, camId0, camId1");
@@ -74,6 +80,9 @@ int main() {
 	std::string command = tokens[0];
 	if (command == "g") {
 		gyroCalibration(tokens[1]);
+	}
+	else if (command == "a") {
+		accelCalibration(tokens[1]);
 	}
 	else if (command == "c") {
 		colorCalibration(tokens[1], std::stoi(tokens[2]));

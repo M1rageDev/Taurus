@@ -2,7 +2,7 @@
 
 #include <glm/glm.hpp>
 
-namespace taurus
+namespace taurus::filter
 {
 	// very simple lowpass filter
 	// takes a portion of the last position and the current position

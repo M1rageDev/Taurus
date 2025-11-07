@@ -37,12 +37,14 @@ namespace taurus
 
 	// path creation functions
 	fs::path createGyroPath(std::string serial);
+	fs::path createAccelPath(std::string serial);
 	fs::path createColorPath(uint8_t cameraId);
 	fs::path createIntrinsicPath(uint8_t cameraId);
 	fs::path createExtrinsicPath(uint8_t cameraId);
 
 	// data creation functions
 	json createGyroData(glm::vec3 offsets);
+	json createAccelData(glm::vec3 bias, glm::vec3 scale);
 	json createColorData(std::unordered_map<std::string, tracking::HsvColorRange> colorDict);
 	json createIntrinsicData(const cv::Mat& K, const cv::Mat& distort);
 	json createExtrinsicData(const cv::Mat& T, const cv::Mat& world);

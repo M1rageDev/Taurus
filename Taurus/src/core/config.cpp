@@ -73,6 +73,7 @@ void taurus::TaurusConfig::ParseConfig() {
 	storage.showPreview = tryGetJsonValue<bool>(configData, "show_preview");
 	storage.annotatePreview = tryGetJsonValue<bool>(configData, "annotate_preview");
 	storage.lowpassAlpha = tryGetJsonVec3(configData, "lowpass_alpha");
+	storage.velocityDecay = tryGetJsonValue<float>(configData, "velocity_decay");
 
 	logging::info("Successfully parsed config file.");
 }

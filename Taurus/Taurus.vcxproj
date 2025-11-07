@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="DebugConfigurator|Win32">
-      <Configuration>DebugConfigurator</Configuration>
+    <ProjectConfiguration Include="DebugCalibrator|Win32">
+      <Configuration>DebugCalibrator</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="DebugConfigurator|x64">
-      <Configuration>DebugConfigurator</Configuration>
+    <ProjectConfiguration Include="DebugCalibrator|x64">
+      <Configuration>DebugCalibrator</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="ReleaseConfigurator|Win32">
-      <Configuration>ReleaseConfigurator</Configuration>
+    <ProjectConfiguration Include="ReleaseCalibrator|Win32">
+      <Configuration>ReleaseCalibrator</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="ReleaseConfigurator|x64">
-      <Configuration>ReleaseConfigurator</Configuration>
+    <ProjectConfiguration Include="ReleaseCalibrator|x64">
+      <Configuration>ReleaseCalibrator</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
@@ -48,7 +48,7 @@
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugConfigurator|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugCalibrator|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
@@ -61,7 +61,7 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseConfigurator|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseCalibrator|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
@@ -74,7 +74,7 @@
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugConfigurator|x64'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugCalibrator|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
@@ -87,7 +87,7 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseConfigurator|x64'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseCalibrator|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
@@ -102,25 +102,25 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugConfigurator|Win32'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugCalibrator|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseConfigurator|Win32'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseCalibrator|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugConfigurator|x64'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugCalibrator|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseConfigurator|x64'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseCalibrator|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -128,7 +128,7 @@
     <OutDir>$(ProjectDir)BinOutput\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)BinIntermediate\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugConfigurator|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugCalibrator|Win32'">
     <OutDir>$(ProjectDir)BinOutput\$(Platform)\Debug</OutDir>
     <IntDir>$(ProjectDir)BinIntermediate\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_Calibrator</TargetName>
@@ -137,7 +137,7 @@
     <OutDir>$(ProjectDir)BinOutput\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)BinIntermediate\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseConfigurator|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseCalibrator|Win32'">
     <OutDir>$(ProjectDir)BinOutput\$(Platform)\Release</OutDir>
     <IntDir>$(ProjectDir)BinIntermediate\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_Calibrator</TargetName>
@@ -146,7 +146,7 @@
     <OutDir>$(ProjectDir)BinOutput\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)BinIntermediate\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugConfigurator|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugCalibrator|x64'">
     <OutDir>$(ProjectDir)BinOutput\$(Platform)\Debug</OutDir>
     <IntDir>$(ProjectDir)BinIntermediate\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_Calibrator</TargetName>
@@ -155,7 +155,7 @@
     <OutDir>$(ProjectDir)BinOutput\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)BinIntermediate\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseConfigurator|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseCalibrator|x64'">
     <OutDir>$(ProjectDir)BinOutput\$(Platform)\Release</OutDir>
     <IntDir>$(ProjectDir)BinIntermediate\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_Calibrator</TargetName>
@@ -181,7 +181,7 @@
       <Command>xcopy /y /d  "$(ProjectDir)thirdparty\dlls\*.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugConfigurator|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugCalibrator|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
@@ -219,7 +219,7 @@
       <Command>xcopy /y /d  "$(ProjectDir)thirdparty\dlls\*.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseConfigurator|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseCalibrator|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -257,7 +257,7 @@
       <Command>xcopy /y /d  "$(ProjectDir)thirdparty\dlls\*.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugConfigurator|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugCalibrator|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
@@ -295,7 +295,7 @@
       <Command>xcopy /y /d  "$(ProjectDir)thirdparty\dlls\*.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseConfigurator|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseCalibrator|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -319,24 +319,25 @@
     <ClCompile Include="include\protocol\TaurusMessages.pb.cc" />
     <ClCompile Include="src\app\optical_thread.cpp" />
     <ClCompile Include="src\app\taurus_app.cpp" />
+    <ClCompile Include="src\core\calibration\camera_calibration.cpp" />
+    <ClCompile Include="src\core\calibration\imu_calibration.cpp" />
     <ClCompile Include="src\core\communication.cpp" />
     <ClCompile Include="src\core\config.cpp" />
-    <ClCompile Include="src\core\lowpass.cpp" />
+    <ClCompile Include="src\core\filter\filter_utils.cpp" />
+    <ClCompile Include="src\core\filter\lowpass.cpp" />
     <ClCompile Include="src\core\tracking\detector.cpp" />
     <ClCompile Include="src\core\tracking\tracking_utils.cpp" />
     <ClCompile Include="src\core\cameras.cpp" />
-    <ClCompile Include="src\core\camera_calibration.cpp" />
-    <ClCompile Include="src\core\imu_calibration.cpp" />
     <ClCompile Include="src\core\json_handler.cpp" />
     <ClCompile Include="src\core\logging.cpp" />
     <ClCompile Include="src\core\madgwick.cpp" />
     <ClCompile Include="src\core\psmove.cpp" />
     <ClCompile Include="src\core\utils.cpp" />
     <ClCompile Include="src\Taurus.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseConfigurator|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugConfigurator|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseConfigurator|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugConfigurator|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseCalibrator|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugCalibrator|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseCalibrator|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugCalibrator|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -347,10 +348,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseConfigurator|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugConfigurator|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseConfigurator|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugConfigurator|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseCalibrator|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugCalibrator|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseCalibrator|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugCalibrator|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\app\communication_thread.cpp" />
     <ClCompile Include="src\app\filter_thread.cpp" />
@@ -360,15 +361,16 @@
   <ItemGroup>
     <ClInclude Include="include\app\optical_thread.h" />
     <ClInclude Include="include\app\taurus_app.h" />
+    <ClInclude Include="include\core\calibration\camera_calibration.h" />
+    <ClInclude Include="include\core\calibration\imu_calibration.h" />
     <ClInclude Include="include\core\communication.h" />
     <ClInclude Include="include\core\config.h" />
-    <ClInclude Include="include\core\lowpass.h" />
+    <ClInclude Include="include\core\filter\filter_utils.h" />
+    <ClInclude Include="include\core\filter\lowpass.h" />
     <ClInclude Include="include\core\tracking\detector.h" />
     <ClInclude Include="include\core\tracking\tracking_utils.h" />
     <ClInclude Include="include\core\cameras.h" />
-    <ClInclude Include="include\core\camera_calibration.h" />
     <ClInclude Include="include\modules\imuCalibration.h" />
-    <ClInclude Include="include\core\imu_calibration.h" />
     <ClInclude Include="include\core\json_handler.h" />
     <ClInclude Include="include\core\logging.h" />
     <ClInclude Include="include\core\madgwick.h" />
