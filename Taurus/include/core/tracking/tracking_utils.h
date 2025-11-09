@@ -40,6 +40,7 @@ namespace taurus::tracking
 
 		// optical prediction
 		glm::vec3 opticalVelocity = {};
+		glm::vec3 opticalVelocityM = {};
 
 		// filtering
 		glm::vec3 preFilteredPosition = {};

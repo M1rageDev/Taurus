@@ -125,6 +125,11 @@ void taurus::OpticalThread::ThreadFunc() {
 
 				// predict
 				obj->opticalVelocity = (obj->worldPosition - obj->previousWorldPosition) / secPassed;
+				if (std::isinf(obj->opticalVelocity.x)) {
+					obj->opticalVelocity = glm::vec3(0.f);
+				}
+				// TODO: figure out why we don't need to convert cm -> m
+				obj->opticalVelocityM = obj->opticalVelocity;
 
 				// store last frame pos, for future filtering
 				obj->previousWorldPosition = obj->worldPosition;

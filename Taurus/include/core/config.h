@@ -25,7 +25,6 @@ namespace taurus
 		std::optional<bool> annotatePreview;
 
 		std::optional<glm::vec3> lowpassAlpha;
-		std::optional<float> velocityDecay;
 	};
 
 	class TaurusConfig {

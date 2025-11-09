@@ -16,7 +16,6 @@ taurus::FilterThread::FilterThread() {
 	this->controllers = ControllerManager::GetInstance();
 
 	this->lowpassAlpha = config->GetStorage()->lowpassAlpha.value_or(glm::vec3(0.4f, 0.4f, 0.3f));
-	this->velocityDecay = config->GetStorage()->velocityDecay.value_or(1.f);
 }
 
 void taurus::FilterThread::Start() {
@@ -59,10 +58,7 @@ void taurus::FilterThread::ThreadFunc() {
 
 				// reset state and plug in the predicted optical velocity
 				obj->kinematic.ResetState();
-				obj->kinematic.SetVelocity(obj->opticalVelocity);
-
-				// apply negative velocity as acceleration to give some decay
-				obj->kinematic.SetAcceleration(-obj->opticalVelocity * velocityDecay);
+				obj->kinematic.SetVelocity(obj->opticalVelocityM);
 
 				// we've handled the new data
 				obj->newOpticalDataReady = false;

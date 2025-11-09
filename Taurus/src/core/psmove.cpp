@@ -313,7 +313,8 @@ void taurus::Controller::HandleAhrs(long now) {
 		vrSpaceQuat = glm::quat(ahrsState.state.w, ahrsState.state.x, ahrsState.state.z, -ahrsState.state.y);
 
 		// update kinematics
-		trackedObject.kinematic.IntegrateIMU(aVec - imuCalibration.accelBias, ahrsState, halfTimestepS);
+		// integration is performed on the filter thread
+		trackedObject.kinematic.UpdateIMU(aVec - imuCalibration.accelBias, ahrsState);
 	}
 
 	ahrsState.lastSample = now;

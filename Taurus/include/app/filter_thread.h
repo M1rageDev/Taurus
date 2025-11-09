@@ -25,7 +25,6 @@ namespace taurus
 
 			glm::vec3 positionPostOffset = {};
 			glm::vec3 lowpassAlpha = {};
-			float velocityDecay = 1.f;
 
 			std::thread thread;
 			std::atomic<bool> threadActive = false;

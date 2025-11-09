@@ -20,6 +20,9 @@ namespace taurus::filter
 
 			void SetVelocity(const glm::vec3& vel);
 			void SetAcceleration(const glm::vec3& acc);
+			void SetRawAcceleration(const glm::vec3& acc);
+
+			void UpdateIMU(const glm::vec3& accel, const MadgwickState& state);
 		private:
 			glm::vec3 RemoveGravity(const glm::vec3& accel, const glm::quat& orient);
 

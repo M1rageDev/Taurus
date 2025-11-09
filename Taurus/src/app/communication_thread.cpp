@@ -154,7 +154,6 @@ void taurus::CommunicationThread::HandleHapticMessage(const messages::HapticMess
 	}
 
 	controllers->GetController(serial)->DoRumble(duration, amplitude);
-	logging::info("%f amplitude %f duration", amplitude, duration);
 }
 
 void taurus::CommunicationThread::HandleTrackersRequest(const messages::TrackersRequestMessage& request) {
