@@ -427,5 +427,5 @@ void taurus::ExtrinsicCalibrator::Calibrate(cv::Mat& frame0, cv::Mat& frame1) {
 	cameraManager->GetCamera(cameraId0).SetExposureMode(Exposure_DARK);
 	cameraManager->GetCamera(cameraId1).SetExposureMode(Exposure_DARK);
 
-	logging::info("Verify that the green line matches the corresponding images, then press any key to continue...");
+	logging::info("Verify that the green line matches the corresponding images, then press ESCAPE to continue...");
 }

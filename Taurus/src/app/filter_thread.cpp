@@ -9,8 +9,6 @@ Subthread which manages the filtering of the tracking data, as well as post proc
 #include "core/filter/lowpass.h"
 #include "core/logging.h"
 
-#include "app/optical_thread.h"
-
 taurus::FilterThread::FilterThread() {
 	this->config = TaurusConfig::GetInstance();
 	this->controllers = ControllerManager::GetInstance();
