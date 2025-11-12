@@ -10,5 +10,5 @@ namespace taurus::filter
 	// alpha should be in the range [0.0, 1.0]
 	glm::vec3 lowpassFilter(const glm::vec3& last, const glm::vec3& current, const glm::vec3& alpha);
 
-	glm::vec3 improvedLowpassFilter(const glm::vec3& last, const glm::vec3& current, const glm::vec3& alpha);
+	glm::vec3 improvedLowpassFilter(const glm::vec3& last, const glm::vec3& current, float alpha, float dist);
 }

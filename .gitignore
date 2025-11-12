@@ -48,3 +48,4 @@ thirdparty/
 vcpkg_installed/
 x64/
 .vs/
+DevResources/

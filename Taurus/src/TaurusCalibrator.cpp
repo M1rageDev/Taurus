@@ -96,6 +96,10 @@ int main() {
 	else {
 		logging::error("Invalid mode!");
 	}
+;
+	// wait for input
+	logging::info("Press any key to exit...");
+	std::getline(std::cin, input);
 
 	controllers.DisconnectControllers();
 	cameraManager.Stop();

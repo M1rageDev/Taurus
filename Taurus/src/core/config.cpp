@@ -72,7 +72,8 @@ void taurus::TaurusConfig::ParseConfig() {
 	storage.udpSendPort = tryGetJsonValue<int>(configData, "udp_send_port");
 	storage.showPreview = tryGetJsonValue<bool>(configData, "show_preview");
 	storage.annotatePreview = tryGetJsonValue<bool>(configData, "annotate_preview");
-	storage.lowpassAlpha = tryGetJsonVec3(configData, "lowpass_alpha");
+	storage.lowpassAlpha = tryGetJsonValue<float>(configData, "lowpass_alpha");
+	storage.lowpassDistance = tryGetJsonValue<float>(configData, "lowpass_distance");
 
 	logging::info("Successfully parsed config file.");
 }

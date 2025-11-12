@@ -34,13 +34,12 @@ taurus::OpticalThread::OpticalThread() {
 	calib1 = camera1.GetCalibration();
 	frame = camera0.InitFrameMat();
 
-	// init the tracked object list
+	// init the tracked object list for every controller
 	trackedObjects = std::vector<tracking::TrackedObject*>();
 	for (std::string serial : connectedControllers) {
-		// run for every connected controller
 		Controller* controller = controllers->GetController(serial);
 
-		// add initial per-camera data to the controller
+		// add initial per-camera data to the object
 		tracking::TrackedObject* obj = controller->GetTrackedObject();
 		for (int i = 0; i < cameraCount; i++) {
 			Camera& cam = cameraManager->GetCamera(i);
@@ -128,8 +127,6 @@ void taurus::OpticalThread::ThreadFunc() {
 				if (std::isinf(obj->opticalVelocity.x)) {
 					obj->opticalVelocity = glm::vec3(0.f);
 				}
-				// TODO: figure out why we don't need to convert cm -> m
-				obj->opticalVelocityM = obj->opticalVelocity;
 
 				// store last frame pos, for future filtering
 				obj->previousWorldPosition = obj->worldPosition;

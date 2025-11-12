@@ -8,8 +8,8 @@
 void taurus::tracking::maskBrightBlobs(const cv::Mat& frame, cv::Mat& masked, cv::Mat& mask) {
 	// convert image to grayscale, erode/dilate to reduce noise
 	cv::cvtColor(frame, mask, cv::COLOR_BGR2GRAY);
-	cv::erode(mask, mask, cv::Mat(), cv::Point(-1, -1), 2);
-	cv::dilate(mask, mask, cv::Mat(), cv::Point(-1, -1), 2);
+	cv::erode(mask, mask, cv::Mat(), cv::Point(-1, -1), 1);
+	cv::dilate(mask, mask, cv::Mat(), cv::Point(-1, -1), 1);
 
 	// do the thresholding
 	cv::threshold(mask, mask, 30, 255, cv::THRESH_BINARY);

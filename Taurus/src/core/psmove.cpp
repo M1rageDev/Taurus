@@ -312,9 +312,11 @@ void taurus::Controller::HandleAhrs(long now) {
 		// swizzle around the axes to get a quaternion in the vr space
 		vrSpaceQuat = glm::quat(ahrsState.state.w, ahrsState.state.x, ahrsState.state.z, -ahrsState.state.y);
 
-		// update kinematics
-		// integration is performed on the filter thread
-		trackedObject.kinematic.UpdateIMU(aVec - imuCalibration.accelBias, ahrsState);
+		// update kinematics with the new IMU data
+		// integration is performed on the filter thread, so we're not doing it here
+		// apply calibration first
+		glm::vec3 kinematicAccel = (aVec - imuCalibration.accelBias);
+		trackedObject.kinematic.UpdateIMU(kinematicAccel, vrSpaceQuat);
 	}
 
 	ahrsState.lastSample = now;
@@ -343,10 +345,6 @@ void taurus::Controller::UpdateThreadFunction() {
 
 	while (updateThreadRunning.load()) {
 		bool polled = Update();
-
-		// TODO: investigate
-		//psmove_util_sleep_ms(1);
-		//std::this_thread::yield();
 	}
 }
 

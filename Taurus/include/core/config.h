@@ -24,7 +24,8 @@ namespace taurus
 		std::optional<bool> showPreview;
 		std::optional<bool> annotatePreview;
 
-		std::optional<glm::vec3> lowpassAlpha;
+		std::optional<float> lowpassAlpha;
+		std::optional<float> lowpassDistance;
 	};
 
 	class TaurusConfig {

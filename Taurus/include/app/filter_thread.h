@@ -24,7 +24,8 @@ namespace taurus
 			ControllerManager* controllers;
 
 			glm::vec3 positionPostOffset = {};
-			glm::vec3 lowpassAlpha = {};
+			float lowpassAlpha;
+			float lowpassDistance;
 
 			std::thread thread;
 			std::atomic<bool> threadActive = false;

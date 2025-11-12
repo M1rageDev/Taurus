@@ -15,7 +15,8 @@ taurus::FilterThread::FilterThread() {
 	this->config = TaurusConfig::GetInstance();
 	this->controllers = ControllerManager::GetInstance();
 
-	this->lowpassAlpha = config->GetStorage()->lowpassAlpha.value_or(glm::vec3(0.4f, 0.4f, 0.3f));
+	this->lowpassAlpha = config->GetStorage()->lowpassAlpha.value_or(0.4f);
+	this->lowpassDistance = config->GetStorage()->lowpassDistance.value_or(20.0f);
 }
 
 void taurus::FilterThread::Start() {
@@ -52,35 +53,31 @@ void taurus::FilterThread::ThreadFunc() {
 			Controller* controller = controllers->GetController(serial);
 			tracking::TrackedObject* obj = controller->GetTrackedObject();
 
-			// handle new optical data
+			// if we've got optical data (reliable but slow), use it and reset the IMU kinematics
 			if (obj->newOpticalDataReady) {
+				// request the optical position to be the one for filtering
 				obj->preFilteredPosition = obj->worldPosition;
 
-				// reset state and plug in the predicted optical velocity
-				obj->kinematic.ResetState();
-				obj->kinematic.SetVelocity(obj->opticalVelocityM);
+				// reset kinematic state and update the velocity with the new reliable optical velocity
+				obj->kinematic.SetPosition(glm::vec3(0.f));
+				obj->kinematic.SetVelocity(obj->opticalVelocity);
 
-				// we've handled the new data
+				// we've handled the new data, so reset the flag
 				obj->newOpticalDataReady = false;
 			}
 			else {
-				// get data from dead reckoning, if no data available yet
+				// we are inbetween optical measurements or we've lost tracking
+				// integrate IMU kinematics and use it as the position
 				obj->kinematic.Integrate(secPassed);
 				obj->preFilteredPosition = obj->worldPosition + obj->kinematic.GetPosition();
 			}
 
-			// filter
-			/*
+			// apply a filter, to reduce noise
 			obj->filteredPosition = filter::improvedLowpassFilter(
 				obj->previousFilteredPosition,
 				obj->preFilteredPosition,
-				lowpassAlpha
-			);
-			*/
-			obj->filteredPosition = filter::lowpassFilter(
-				obj->previousFilteredPosition,
-				obj->preFilteredPosition,
-				lowpassAlpha
+				lowpassAlpha,
+				lowpassDistance
 			);
 			obj->previousFilteredPosition = obj->filteredPosition;
 

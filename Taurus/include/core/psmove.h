@@ -118,13 +118,9 @@ namespace taurus
 			bool isCharging;
 
 			// input
+			unsigned int buttonBitfield;
 			unsigned char trigger;
 			float trigger01;
-
-			unsigned int buttonBitfield;
-
-			// Tracking
-			tracking::TrackedObject trackedObject;
 
 			// IMU and AHRS
 			ImuCalibration imuCalibration;
@@ -134,6 +130,9 @@ namespace taurus
 			glm::quat initialQuat;
 			MadgwickState ahrsState;
 			glm::quat vrSpaceQuat;
+
+			// tracking
+			tracking::TrackedObject trackedObject;
 	};
 
 	class ControllerManager {
